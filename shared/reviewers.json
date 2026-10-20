@@ -1,0 +1,70 @@
+{
+  "solution-architect": {
+    "description": "Review architecture boundaries, contract compatibility, design fidelity, and system tradeoffs.",
+    "checks": [
+      "Compare dependency direction, component ownership, and cycles with actual repository rules.",
+      "Inspect API/event consumers, backward compatibility, rollout order, and accepted design deviations.",
+      "Assess transactions, idempotency, retries, consistency, and relevant NFRs.",
+      "Do not impose DDD or extra layers unless the project requires them."
+    ]
+  },
+  "security": {
+    "description": "Review trust boundaries, authorization, untrusted inputs, and sensitive data exposure.",
+    "checks": [
+      "Trace attacker-controlled inputs and object/tenant authorization, including enforcement outside changed lines.",
+      "Inspect injection, unsafe file/network access, session/secret handling, and resource exhaustion where relevant.",
+      "Distinguish intentionally public behavior from a missing authorization control.",
+      "Grade by exposure, exploit prerequisites, impact, and confidence; do not invent scanner or penetration-test results."
+    ]
+  },
+  "quality-assurance": {
+    "description": "Review acceptance-criteria coverage, meaningful assertions, and regression evidence.",
+    "checks": [
+      "Map each criterion to implementation and actual verification evidence; allow many-to-many links.",
+      "Inspect boundaries, negative paths, dependency failures, and relevant authorization scenarios.",
+      "Identify weakened, skipped, or deleted tests and their justification.",
+      "Distinguish test existence from execution and passing results for this snapshot."
+    ]
+  },
+  "maintainability": {
+    "description": "Review correctness risks, error handling, coupling, and repository coding conventions.",
+    "checks": [
+      "Inspect error propagation, cleanup, null/type assumptions, and misleading control flow.",
+      "Explain concrete consequences of duplicated business rules or excessive coupling.",
+      "Apply established project conventions rather than personal style preferences."
+    ]
+  },
+  "performance": {
+    "description": "Review hot paths, query patterns, memory, caching, and bounded concurrency.",
+    "checks": [
+      "Inspect N+1 queries, unbounded collections, network calls inside transactions, and hot-loop complexity.",
+      "Assess concurrency limits, backpressure, resource lifecycle, and cache identity/invalidation.",
+      "State workload assumptions and distinguish measurements from source-based hypotheses."
+    ]
+  },
+  "data": {
+    "description": "Review persisted formats, schema migration, data integrity, and recovery feasibility.",
+    "checks": [
+      "Assess old/new application compatibility, constraints, consumers, and rollout order.",
+      "Evaluate locks, backfills, transactions, and indexes for the actual database engine.",
+      "Check credible rollback, restore, or forward-recovery plans; do not require a destructive down migration."
+    ]
+  },
+  "operations": {
+    "description": "Review deployment behavior, reliability, observability, and operational recovery.",
+    "checks": [
+      "Inspect deployment ordering, configuration references, and readiness/health semantics.",
+      "Assess timeout/retry budgets, shutdown, telemetry, and operational ownership.",
+      "Identify missing rollout and recovery evidence without claiming production behavior was tested."
+    ]
+  },
+  "frontend": {
+    "description": "Review user interaction states, accessibility, client behavior, and rendering risks.",
+    "checks": [
+      "Inspect loading, empty, error, success, and duplicate-submission behavior where applicable.",
+      "Check keyboard/focus behavior, semantics, labels, and the project's accessibility target.",
+      "Assess state transitions, subscriptions, rendering, and dependency impact.",
+      "Distinguish source inspection from observed browser/device behavior."
+    ]
+  }
+}
